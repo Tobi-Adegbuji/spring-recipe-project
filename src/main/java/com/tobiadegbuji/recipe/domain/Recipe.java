@@ -33,6 +33,9 @@ public class Recipe {
     @Lob //Will be created as a BLOB field in the database
     private Byte[] image;
 
+    @Enumerated(value = EnumType.STRING) //Using STRING instead of ORDINAL so that future changes to the enum will not affect anything. Ordinal values get persisted with numbers instead of the String.
+    private Difficulty difficulty;
+
     @OneToOne(cascade = CascadeType.ALL) //If we delete a Recipe object, the notes object gets deleted as well.
     private Notes notes;
 
@@ -114,6 +117,14 @@ public class Recipe {
 
     public void setImage(Byte[] image) {
         this.image = image;
+    }
+
+    public Difficulty getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(Difficulty difficulty) {
+        this.difficulty = difficulty;
     }
 
     public Notes getNotes() {
