@@ -14,8 +14,8 @@ public class Ingredient {
 
     private BigDecimal amount;
 
-    //TODO ADD
-    //private UnitOfMeasure unitOfMeasure;
+    @OneToOne(fetch = FetchType.EAGER) //No cascade needed since we do not want to delete a unitOfMeasure if an ingredient gets deleted
+    private UnitOfMeasure unitOfMeasure;
 
     @ManyToOne
     private Recipe recipe;
@@ -44,13 +44,13 @@ public class Ingredient {
         this.amount = amount;
     }
 
-   // public UnitOfMeasure getUnitOfMeasure() {
-    //    return unitOfMeasure;
-   // }
+    public UnitOfMeasure getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
 
-   // public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
-   //     this.unitOfMeasure = unitOfMeasure;
-   // }
+    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
+    }
 
     public Recipe getRecipe() {
         return recipe;
