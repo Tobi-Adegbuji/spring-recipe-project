@@ -113,6 +113,13 @@ public class Recipe {
         this.directions = directions;
     }
 
+
+    public Recipe addIngredient(Ingredient ingredient){
+        ingredient.setRecipe(this); //So we dont have to set it ourselves outside of the class. Did the same for Notes
+        this.ingredients.add(ingredient);
+        return this;
+    }
+
     public Set<Ingredient> getIngredients() {
         return ingredients;
     }
@@ -143,6 +150,7 @@ public class Recipe {
 
     public void setNotes(Notes notes) {
         this.notes = notes;
+        notes.setRecipe(this); //Where we build association so we dont have to set it ourselves outside of the class
     }
 
     public Set<Category> getCategories() {
