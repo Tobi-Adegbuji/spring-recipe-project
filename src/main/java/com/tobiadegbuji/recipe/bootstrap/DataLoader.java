@@ -123,7 +123,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         perfectGuacamole.addIngredient(new Ingredient("minced red onion or thinly sliced green onion", new BigDecimal(2), tableSpoonUom));
         perfectGuacamole.addIngredient(new Ingredient("serrano chiles, stems/seeds removed, minced", new BigDecimal(2), eachUom));
         perfectGuacamole.addIngredient(new Ingredient("Cilantro", new BigDecimal(2), tableSpoonUom));
-        perfectGuacamole.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom,));
+        perfectGuacamole.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom));
         perfectGuacamole.addIngredient(new Ingredient("ripe tomato, seeds & pulp removed, chopped", new BigDecimal(.5), eachUom));
 
 
