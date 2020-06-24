@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Service
-@Slf4j //Helps add logging
+@Slf4j //Helps add logging functionality
 public class RecipeServiceImpl implements RecipeService {
 
    private final RecipeRepository recipeRepository;
