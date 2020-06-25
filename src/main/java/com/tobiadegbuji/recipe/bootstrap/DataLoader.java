@@ -119,9 +119,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         perfectGuacamole.getCategories().add(americanCategory);
         perfectGuacamole.getCategories().add(mexicanCategory);
         Notes perfectGuacamoleNotes = new Notes();
-        //perfectGuacamoleNotes.setRecipe(perfectGuacamole);
+        perfectGuacamoleNotes.setRecipe(perfectGuacamole);
         perfectGuacamoleNotes.setRecipeNotes("This is my note for perfect Guac!");
-       // perfectGuacamole.setNotes(perfectGuacamoleNotes);
+        perfectGuacamole.setNotes(perfectGuacamoleNotes);
 
         //Get Ingredients returns a set to allow us to add new ingredients for the recipe
         perfectGuacamole.addIngredient(new Ingredient("ripe avocados", new BigDecimal(2), eachUom));
@@ -133,6 +133,8 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         perfectGuacamole.addIngredient(new Ingredient("freshly grated black pepper", new BigDecimal(2), dashUom));
         perfectGuacamole.addIngredient(new Ingredient("ripe tomato, seeds & pulp removed, chopped", new BigDecimal(.5), eachUom));
 
+        perfectGuacamole.setUrl("https://www.simplyrecipes.com/recipes/perfect_guacamole/");
+        perfectGuacamole.setSource("Simply Recipe");
 
         recipes.add(perfectGuacamole);
 
@@ -144,9 +146,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         spicyGrilledChickenTaco.setDirections("To be Added");
 
         Notes spicyGrilledChickenNotes = new Notes();
-        //spicyGrilledChickenNotes.setRecipe(spicyGrilledChickenTaco);
+        spicyGrilledChickenNotes.setRecipe(spicyGrilledChickenTaco);
         spicyGrilledChickenNotes.setRecipeNotes("This some notes for the Spicy Grilled Chicken Recipe");
-        //spicyGrilledChickenTaco.setNotes(spicyGrilledChickenNotes);
+        spicyGrilledChickenTaco.setNotes(spicyGrilledChickenNotes);
 
         spicyGrilledChickenTaco.addIngredient(new Ingredient("Ancho Chili Powder", new BigDecimal(2), tableSpoonUom));
         spicyGrilledChickenTaco.addIngredient(new Ingredient("Dried Oregano", new BigDecimal(1), teaSpoonUom));
@@ -170,6 +172,9 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
 
         spicyGrilledChickenTaco.getCategories().add(mexicanCategory);
         spicyGrilledChickenTaco.getCategories().add(americanCategory);
+
+        spicyGrilledChickenTaco.setSource("Simply Recipe");
+        spicyGrilledChickenTaco.setUrl("https://www.simplyrecipes.com/recipes/spicy_grilled_chicken_tacos/");
 
         recipes.add(spicyGrilledChickenTaco);
 
