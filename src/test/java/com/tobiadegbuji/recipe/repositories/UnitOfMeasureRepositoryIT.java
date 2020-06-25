@@ -31,6 +31,7 @@ class UnitOfMeasureRepositoryIT {
         assertEquals("each",uomOptional.get().getUnitOfMeasure());
     }
 
+    @Test
     void findByUnitOfMeasureCup() throws Exception{
         Optional<UnitOfMeasure> uomOptional = unitOfMeasureRepository.findByUnitOfMeasure("cup");
         assertEquals("cup",uomOptional.get().getUnitOfMeasure());
