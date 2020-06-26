@@ -142,6 +142,7 @@ public class DataLoader implements ApplicationListener<ContextRefreshedEvent> {
         spicyGrilledChickenTaco.setDescription("Spicy Grilled Chicken Taco");
         spicyGrilledChickenTaco.setCookTime(9);
         spicyGrilledChickenTaco.setPrepTime(20);
+        spicyGrilledChickenTaco.setServings(5);
         spicyGrilledChickenTaco.setDifficulty(Difficulty.MEDIUM);
         spicyGrilledChickenTaco.setDirections("To be Added");
 
