@@ -42,10 +42,21 @@
 </nav>
 
 <!--HOME-->
-<div class="card mx-auto" style="width: 60rem; margin-top: 20px">
+<div class="card mx-auto w-75 mt-5">
+    <div class="card-header container-fluid" >
+        <div class="row">
+            <div class="col-6 d-flex justify-content-start">
+                <h5 class="card-title ">Recipe Info</h5>
+
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <a class="btn btn-link btn-primary btn-lg text-white" th:href="'/recipe/'+ ${recipe.id} + '/update'">Edit</a>
+            </div>
+        </div>
+    </div>
+
     <div class="card-body">
         <h5 class="card-title" th:text="${recipe.description}">Recipe Name</h5>
-        <h6 class="card-subtitle mb-2 text-muted">EST</h6>
         <p class="card-text" th:text="${'Prep Time: ' + recipe.getPrepTime() + ' min'}">Prep Time: </p>
         <p class="card-text" th:text="${'Cook Time: ' + recipe.getCookTime() + ' min'}">Cook Time: </p>
         <p class="card-text" th:text="${'Difficulty: ' + recipe.difficulty}">Difficulty: </p>
@@ -55,7 +66,7 @@
 
     </div>
 </div>
-<div class="card mx-auto" style="width: 60rem; margin-top: 20px">
+<div class="card mx-auto w-75 mt-5">
     <div class="card-body">
         <h5 class="card-title">Ingredients</h5>
         <h6 class="card-subtitle mb-2 text-muted" th:text="${recipe.description + ' ingredients'}">Food Ingredients</h6>
@@ -64,21 +75,27 @@
         <li class="list-group-item" th:each="ingredient : ${recipe.ingredients}" th:text="${ingredient.description + ' - ' + ingredient.getAmount()+ ' ' + ingredient.getUnitOfMeasure().getUnitOfMeasure()}">Ingredients</li>
     </ul>
 </div>
-<div class="card mx-auto" style="width: 60rem; margin-top: 20px">
+
+
+
+<div class="card mx-auto w-75 mt-5">
     <div class="card-body">
         <h5 class="card-title" >Directions</h5>
         <p class="card-text" th:text="${recipe.directions}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
 </div>
 
-<div class="card mx-auto" style="width: 60rem; margin-top: 20px">
+
+
+
+<div class="card mx-auto w-75 mt-5">
     <div class="card-body">
         <h5 class="card-title">Notes</h5>
         <p class="card-text" th:text="${recipe.notes.recipeNotes}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
 </div>
 
-<div class="card mx-auto" style="width: 60rem; margin-top: 20px">
+<div class="card mx-auto w-75 mt-5">
     <div class="card-body">
         <h5 class="card-title">Categories</h5>
         <h6 class="card-subtitle mb-2 text-muted" th:text="${recipe.description + ' belongs to these categories:'}">Recipe</h6>
