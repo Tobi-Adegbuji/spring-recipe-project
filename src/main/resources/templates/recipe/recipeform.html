@@ -24,7 +24,7 @@
 <body>
 
 <!--NAV-->
-<nav class="navbar navbar-expand-lg navbar-light text-primary shadow">
+<nav class="navbar navbar-expand-lg navbar-light text-primary shadow w-100">
     <a class="navbar-brand text-dark" href="#">Spring Recipes</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -42,31 +42,44 @@
 </nav>
 
 <!--FORM CARD-->
+<form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
+    <input type="hidden" th:field="*{id}"/>
 <div class="card mx-auto w-75 mt-3">
     <div class="card-body">
         <h5 class="card-title">Recipe Information</h5>
-        <form>
             <div class="form-group">
                 <label for="exampleFormControlInput1">Recipe Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" >
+                <input type="text" class="form-control" id="exampleFormControlInput1"  th:field="*{description}" >
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput2">Prep Time</label>
-                <input type="number" class="form-control" id="exampleFormControlInput2">
+                <input type="number" class="form-control" id="exampleFormControlInput2"  th:field="*{prepTime}">
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput3">Cook Time</label>
-                <input type="number" class="form-control" id="exampleFormControlInput3">
+                <input type="number" class="form-control" id="exampleFormControlInput3"  th:field="*{cookTime}">
             </div>
             <div class="form-group">
-                <label for="exampleFormControlSelect1">Difficulty</label>
-                <select class="form-control" id="exampleFormControlSelect1">
+                <label for="exampleFormControlSelect">Difficulty</label>
+                <select class="form-control" id="exampleFormControlSelect" >
                     <option>EASY</option>
                     <option>MEDIUM</option>
                     <option>HARD</option>
                 </select>
             </div>
-        </form>
+        <div class="form-group">
+            <label for="exampleFormControlInput6">Servings</label>
+            <input type="number" class="form-control" id="exampleFormControlInput6"  th:field="*{servings}">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput4">Source</label>
+            <input type="text" class="form-control" id="exampleFormControlInput4"  th:field="*{source}">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput5">URL</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5"  th:field="*{url}">
+        </div>
+
     </div>
 </div>
 
@@ -79,7 +92,7 @@
 
 
                 <div class="col-3">
-                    <div class="card shadow-lg bg-light w-100">
+                    <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
@@ -100,7 +113,7 @@
 
 <!--                CARD 2-->
                 <div class="col-3">
-                    <div class="card shadow-lg bg-light w-100">
+                    <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
@@ -124,7 +137,7 @@
 
 
                 <div class="col-3">
-                    <div class="card shadow-lg bg-light w-100">
+                    <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
@@ -147,7 +160,7 @@
 
 
                 <div class="col-3">
-                    <div class="card shadow-lg bg-light w-100">
+                    <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
@@ -187,34 +200,44 @@
     </div>
     </div>
     <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted" ></h6>
+        <ul class="list-group-flush list-group">
+            <li class="list-group-item" th:each="ingredient: ${recipe.ingredients}"
+                th:text="${ingredient.description + ' - ' + ingredient.getAmount()+ ' ' + ingredient.getUnitOfMeasure().getUnitOfMeasure()}">
+            </li>
+        </ul>
     </div>
 </div>
 
 <div class="card mx-auto mt-3 w-75">
     <div class="card-body">
         <h5 class="card-title">Directions</h5>
-        <form>
+
             <div class="form-group">
                 <label for="exampleFormControlTextarea1"></label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{directions}"></textarea>
             </div>
-        </form>
+
     </div>
 </div>
 
 <div class="card mx-auto mt-3 w-75">
     <div class="card-body">
         <h5 class="card-title">Notes</h5>
-        <form>
+
             <div class="form-group">
                 <label for="exampleFormControlTextarea2"></label>
-                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{notes.recipeNotes}"></textarea>
             </div>
-        </form>
+
     </div>
 </div>
 
+    <div class="row justify-content-center">
+    <button type="submit" class="btn btn-success w-75 mt-3 mb-3 ">Submit Changes</button>
+    </div>
+
+
+</form>
 
 
 </body>
