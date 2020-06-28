@@ -173,7 +173,7 @@
                 <h5 class="card-title ">Ingredients</h5>
             </div>
             <div class="col-6 d-flex justify-content-end">
-                <button type="button" class="btn btn-primary btn-sm">Edit</button>
+                <a class="btn btn-link btn-lg btn-primary text-white" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients'}">Edit</a>
             </div>
         </div>
     </div>
