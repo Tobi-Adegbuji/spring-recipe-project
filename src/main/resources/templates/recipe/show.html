@@ -43,7 +43,7 @@
 
 <!--HOME-->
 <div class="card mx-auto w-75 mt-5">
-    <div class="card-header container-fluid" >
+    <div class="card-header container-fluid bg-dark text-white" >
         <div class="row">
             <div class="col-6 d-flex justify-content-start">
                 <h5 class="card-title ">Recipe Info</h5>
@@ -67,8 +67,10 @@
     </div>
 </div>
 <div class="card mx-auto w-75 mt-5">
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Ingredients</h5>
+    </div>
+    <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted" th:text="${recipe.description + ' ingredients'}">Food Ingredients</h6>
     </div>
     <ul class="list-group list-group-flush">
@@ -79,8 +81,10 @@
 
 
 <div class="card mx-auto w-75 mt-5">
+    <div class="card-header bg-dark text-white">
+        <h5 class="card-title">Directions</h5>
+    </div>
     <div class="card-body">
-        <h5 class="card-title" >Directions</h5>
         <p class="card-text" th:text="${recipe.directions}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
 </div>
@@ -89,21 +93,28 @@
 
 
 <div class="card mx-auto w-75 mt-5">
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Notes</h5>
+    </div>
+    <div class="card-body">
         <p class="card-text" th:text="${recipe.notes.recipeNotes}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
 </div>
 
 <div class="card mx-auto w-75 mt-5">
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Categories</h5>
+    </div>
+    <div class="card-body">
         <h6 class="card-subtitle mb-2 text-muted" th:text="${recipe.description + ' belongs to these categories:'}">Recipe</h6>
     </div>
     <ul class="list-group list-group-flush">
         <li class="list-group-item" th:each="category : ${recipe.categories}" th:text="${category.getCategoryName()}">All Categories</li>
     </ul>
 </div>
+
+<form action=""></form>
+<a href="" type="submit"></a>
 
 </body>
 </html>

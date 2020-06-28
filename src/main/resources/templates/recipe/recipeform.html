@@ -45,8 +45,10 @@
 <form  th:object="${recipe}" th:action="@{/recipe/}"  method="post">
     <input type="hidden" th:field="*{id}"/>
 <div class="card mx-auto w-75 mt-3">
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Recipe Information</h5>
+    </div>
+    <div class="card-body">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Recipe Name</label>
                 <input type="text" class="form-control" id="exampleFormControlInput1"  th:field="*{description}" >
@@ -85,18 +87,20 @@
 
 
 <div class="card mx-auto mt-3 w-75" >
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Categories</h5>
+    </div>
+    <div class="card-body">
         <div class="container">
             <div class="row">
 
 
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Ingredients</h6>
+                                    <h6 class="card-title ">Mexican</h6>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
                                     <div class="form-check">
@@ -106,18 +110,18 @@
                             </div>
                         </div>
                         <div class="card-body">
-                        <img src="../../static/images/food1.jpg"  th:src="@{images/food1.jpg}" class="img-fluid" alt="...">
+                        <img th:src="@{/images/food1.jpg}" class="img-fluid" alt="...">
                         </div>
                     </div>
                 </div>
 
 <!--                CARD 2-->
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Ingredients</h6>
+                                    <h6 class="card-title ">Japanese</h6>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
                                     <div class="form-check">
@@ -127,7 +131,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <img src="../../static/images/food1.jpg"  th:src="@{images/food1.jpg}" class="img-fluid" alt="...">
+                            <img th:src="@{/images/food2.jpg}" class="img-fluid" alt="...">
                         </div>
                     </div>
                 </div>
@@ -136,12 +140,12 @@
 
 
 
-                <div class="col-3">
+                <div class="col-4">
                     <div class="card shadow-sm bg-light w-100">
                         <div class="card-header container-fluid" >
                             <div class="row">
                                 <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Ingredients</h6>
+                                    <h6 class="card-title ">Italian</h6>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
                                     <div class="form-check">
@@ -151,36 +155,10 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <img src="../../static/images/food1.jpg"  th:src="@{images/food1.jpg}" class="img-fluid" alt="...">
+                            <img th:src="@{/images/food3.jpg}" class="img-fluid w-100" alt="...">
                         </div>
                     </div>
                 </div>
-
-
-
-
-                <div class="col-3">
-                    <div class="card shadow-sm bg-light w-100">
-                        <div class="card-header container-fluid" >
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Ingredients</h6>
-                                </div>
-                                <div class="col-6 d-flex justify-content-end">
-                                    <div class="form-check">
-                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox3" value="option1" aria-label="...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <img src="../../static/images/food1.jpg"  th:src="@{images/food1.jpg}" class="img-fluid" alt="...">
-                        </div>
-                    </div>
-                </div>
-
-
-
             </div>
         </div>
     </div>
@@ -189,7 +167,7 @@
 
 
 <div class="card mx-auto w-75 mt-3">
-    <div class="card-header container-fluid" >
+    <div class="card-header container-fluid bg-dark text-white" >
         <div class="row">
             <div class="col-6 d-flex justify-content-start">
                 <h5 class="card-title ">Ingredients</h5>
@@ -197,7 +175,7 @@
             <div class="col-6 d-flex justify-content-end">
                 <button type="button" class="btn btn-primary btn-sm">Edit</button>
             </div>
-    </div>
+        </div>
     </div>
     <div class="card-body">
         <ul class="list-group-flush list-group">
@@ -209,9 +187,10 @@
 </div>
 
 <div class="card mx-auto mt-3 w-75">
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Directions</h5>
-
+    </div>
+    <div class="card-body">
             <div class="form-group">
                 <label for="exampleFormControlTextarea1"></label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{directions}"></textarea>
@@ -221,9 +200,10 @@
 </div>
 
 <div class="card mx-auto mt-3 w-75">
-    <div class="card-body">
+    <div class="card-header bg-dark text-white">
         <h5 class="card-title">Notes</h5>
-
+    </div>
+    <div class="card-body">
             <div class="form-group">
                 <label for="exampleFormControlTextarea2"></label>
                 <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{notes.recipeNotes}"></textarea>

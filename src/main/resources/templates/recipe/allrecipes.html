@@ -78,6 +78,7 @@
                     <td th:text="${recipe.prepTime}"></td>
                     <td th:text="${recipe.cookTime}"></td>
                     <td th:text="${recipe.difficulty}"></td>
+                    <td><a class="btn btn-link btn-danger btn-sm" style="color: white" href="#" th:href="@{'/recipe/' + ${recipe.id} + '/delete'}">Delete</a></td>
                 </tr>
             </table>
         </div>
