@@ -74,12 +74,12 @@
                 </thead>
                 <tr style="margin-left: 10px" th:each="ingredient: ${recipe.ingredients}">
                     <td><a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients/' + ${ingredient.id} + '/show'}" th:text="${ingredient.description}">View</a></td>
-                    <td><a class="btn btn-link btn-danger btn-sm text-white" style="color: white" href="#">Delete</a>
+                    <td><a th:href="@{'/recipe/' + ${recipe.id} + '/ingredients/' + ${ingredient.id} + '/delete'}" class="btn btn-link btn-danger btn-sm text-white" style="color: white" href="#">Delete</a>
                     </td>
                 </tr>
             </table>
         </div>
-        <a href="#" class="btn btn-primary" th:href="@{'/recipe/ingredient/new'}">Add New Ingredient</a>
+        <a href="#" class="btn btn-primary" th:href="@{'/recipe/' + ${recipe.id} + '/ingredients/new'}">Add New Ingredient</a>
     </div>
 </div>
 

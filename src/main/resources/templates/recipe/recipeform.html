@@ -63,7 +63,14 @@
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect">Difficulty</label>
-                <select class="form-control" id="exampleFormControlSelect" >
+                <select class="form-control" id="exampleFormControlSelect"  th:field="*{difficulty}">
+                    <option th:each="valueOfDifficulty : ${T(com.tobiadegbuji.recipe.domain.Difficulty).values()}"
+                            th:value="${valueOfDifficulty.name()}"
+                            th:text="${valueOfDifficulty.name()}"
+                    >Value
+                    </option>
+                </select>
+                <select class="form-control" th:remove="all" >
                     <option>EASY</option>
                     <option>MEDIUM</option>
                     <option>HARD</option>
