@@ -1,6 +1,7 @@
 package com.tobiadegbuji.recipe.controllers;
 
 import com.tobiadegbuji.recipe.commands.IngredientCommand;
+import com.tobiadegbuji.recipe.converters.UnitOfMeasureCommandToUnitOfMeasure;
 import com.tobiadegbuji.recipe.services.IngredientService;
 import com.tobiadegbuji.recipe.services.RecipeService;
 import com.tobiadegbuji.recipe.services.UnitOfMeasureService;
@@ -20,6 +21,7 @@ public class IngredientController {
     private final IngredientService ingredientService;
     private final UnitOfMeasureService unitOfMeasureService;
 
+
     public IngredientController(RecipeService recipeService, IngredientService ingredientService, UnitOfMeasureService unitOfMeasureService) {
         this.recipeService = recipeService;
         this.ingredientService = ingredientService;
@@ -37,6 +39,16 @@ public class IngredientController {
         model.addAttribute("ingredient", ingredientService.findById(Long.parseLong(id)));
         model.addAttribute("recipe", recipeService.findById(Long.parseLong(recipeId)));
         return "recipe/ingredients/show";
+    }
+
+    @GetMapping("recipe/{recipeId}/ingredients/new")
+    public String newIngredient(@PathVariable String recipeId, Model model){
+        model.addAttribute("recipe", recipeService.findById(Long.parseLong(recipeId)));
+        model.addAttribute("uomList",unitOfMeasureService.getUoms());
+        IngredientCommand ingredientCommand = new IngredientCommand();
+        ingredientCommand.setUnitOfMeasure(unitOfMeasureService.findFirstUom());
+        model.addAttribute("ingredient", ingredientCommand);
+        return "recipe/ingredients/ingredientform";
     }
 
     @GetMapping("recipe/{recipeId}/ingredients/{id}/update")

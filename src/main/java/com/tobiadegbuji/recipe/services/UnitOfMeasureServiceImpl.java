@@ -2,6 +2,7 @@ package com.tobiadegbuji.recipe.services;
 
 import com.tobiadegbuji.recipe.commands.UnitOfMeasureCommand;
 import com.tobiadegbuji.recipe.converters.UnitOfMeasureToUnitOfMeasureCommand;
+import com.tobiadegbuji.recipe.domain.UnitOfMeasure;
 import com.tobiadegbuji.recipe.repositories.UnitOfMeasureRepository;
 import org.springframework.stereotype.Service;
 
@@ -27,4 +28,8 @@ public class UnitOfMeasureServiceImpl implements UnitOfMeasureService {
                 .collect(Collectors.toSet());
     }
 
+    @Override
+    public UnitOfMeasure findFirstUom() {
+        return unitOfMeasureRepository.findById(1L).get();
+    }
 }

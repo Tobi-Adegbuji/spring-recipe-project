@@ -43,7 +43,7 @@
 </nav>
 
 <!--FORM CARD-->
-<form th:object="${ingredient}" th:action="@{'/recipe/' + ${ingredient.recipeId} + '/ingredients'}" method="post">
+<form th:object="${ingredient}" th:action="@{'/recipe/' + ${recipeId} + '/ingredients'}" method="post">
     <input type="hidden" th:field="*{id}"/>
 
     <div class="container mt-5">
@@ -69,14 +69,14 @@
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label>Unit of Measure:</label>
-                                        <select class="form-control" name="unitOfMeasure.id">
-                                            <option th:each="uom : ${uomList}"
-                                                    th:value="${uom.id}"
-                                                    th:selected="${uom.id.equals(ingredient.unitOfMeasure.id)}"
-                                                    th:text="${uom.unitOfMeasure}">
-                                                Each Unit Of Measure
-                                            </option>
-                                        </select>
+                                            <select class="form-control" name="unitOfMeasure.id">
+                                                <option th:each="uom : ${uomList}"
+                                                        th:value="${uom.id}"
+                                                        th:selected="${uom.id.equals(ingredient.unitOfMeasure.id)}"
+                                                        th:text="${uom.unitOfMeasure}">
+                                                    Each Unit Of Measure
+                                                </option>
+                                            </select>
                                     </div>
                                 </div>
                             </div>
