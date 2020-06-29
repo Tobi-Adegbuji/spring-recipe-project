@@ -45,22 +45,16 @@
 
 
 
-<div class="card bg-white shadow-sm w-75 mx-auto mt-5">
+<div class="card bg-dark text-white shadow-sm w-75 mx-auto mt-5">
     <div class="card-body">
-        <h1 class="display-4">Recipes Galore</h1>
+        <h1 class="display-4">Recipes</h1>
         <p class="lead text-primary">Viewing all recipes</p>
     </div>
 </div>
 
 
-
-    <img th:src="@{/images/tacosalad.png}" alt="cookbook" class="d-block w-25 img-fluid mx-auto">
-
-
-
 <div class="card mx-auto mt-5 w-75 mb-1" >
     <div class="card-header bg-dark text-light">
-        <h5 class="card-title">All Recipes</h5>
     </div>
     <div class="card-body text-dark bg-white" >
         <div  class="table-responsive" th:if="${not #lists.isEmpty(recipes)}">

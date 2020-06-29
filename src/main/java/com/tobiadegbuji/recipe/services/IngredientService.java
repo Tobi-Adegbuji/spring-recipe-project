@@ -5,4 +5,7 @@ import com.tobiadegbuji.recipe.domain.Ingredient;
 
 public interface IngredientService {
     IngredientCommand findById(Long id);
+
+    IngredientCommand saveIngredientCommand(IngredientCommand ingredientCommand);
+
 }
