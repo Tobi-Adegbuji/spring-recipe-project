@@ -1,5 +1,6 @@
 package com.tobiadegbuji.recipe.controllers;
 
+import com.tobiadegbuji.recipe.commands.RecipeCommand;
 import com.tobiadegbuji.recipe.services.ImageService;
 import com.tobiadegbuji.recipe.services.RecipeService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.apache.commons.io.IOUtils;
+
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 @Controller
 public class ImageController {
@@ -29,6 +37,21 @@ public class ImageController {
     @PostMapping("recipe/{id}/image")
     public String postImage(@PathVariable String id, @RequestParam("imagefile") MultipartFile multipartFile){
         imageService.saveImageFile(Long.parseLong(id), multipartFile);
-        return "redirect:/recipe" + id + "/show";
+        return "redirect:/recipe/" + id + "/show";
     }
+
+    @GetMapping("recipe/{id}/recipeimage")
+    public void getRecipeImage(@PathVariable String id, HttpServletResponse response) throws IOException {
+        RecipeCommand recipeCommand = recipeService.findCommandById(Long.parseLong(id));
+        byte[] byteArray = new byte[recipeCommand.getImage().length];
+        int i = 0;
+        for(Byte wrapperByte: recipeCommand.getImage()){
+            byteArray[i++] = wrapperByte;
+        }
+        response.setContentType("image/jpeg");
+        InputStream is = new ByteArrayInputStream(byteArray);
+        IOUtils.copy(is, response.getOutputStream());
+    }
+
+
 }
