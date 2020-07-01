@@ -45,7 +45,7 @@
 <!--HOME-->
 
 <div class="card shadow-lg mt-5 mx-auto w-25">
-    <img th:src="${(recipe.image != null ? '/recipe/' + ${recipe.id} + '/recipeimage' : '/images/foodavatar.jpg'}" alt="recipe book" class="d-block img-fluid">
+    <img src="../../static/img/foodavatar.jpg" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" alt="recipe book" class="d-block img-fluid">
 </div>
 
 

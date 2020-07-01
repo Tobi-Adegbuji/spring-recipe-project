@@ -4,6 +4,7 @@ import com.tobiadegbuji.recipe.commands.RecipeCommand;
 import com.tobiadegbuji.recipe.converters.RecipeCommandToRecipe;
 import com.tobiadegbuji.recipe.converters.RecipeToRecipeCommand;
 import com.tobiadegbuji.recipe.domain.Recipe;
+import com.tobiadegbuji.recipe.exceptions.NotFoundException;
 import com.tobiadegbuji.recipe.repositories.RecipeRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -36,13 +37,14 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe findById(Long l) {
+    public Recipe findById(Long l){
         Optional<Recipe> recipeOptional = recipeRepository.findById(l);
 
-        if(recipeOptional.isPresent())
-            return recipeOptional.get();
+        if(!recipeOptional.isPresent())
+        throw new NotFoundException("Cannot find recipe!");
         else
-            throw  new RuntimeException("Recipe Not Found");
+            return recipeOptional.get();
+
     }
 
     @Transactional
