@@ -1,11 +1,14 @@
 package com.tobiadegbuji.recipe.controllers;
 
 import com.tobiadegbuji.recipe.commands.RecipeCommand;
- import com.tobiadegbuji.recipe.services.RecipeService;
+import com.tobiadegbuji.recipe.exceptions.NotFoundException;
+import com.tobiadegbuji.recipe.services.RecipeService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
@@ -55,6 +58,20 @@ public class RecipeController {
         recipeService.deleteById(Long.valueOf(id));
         return "redirect:/recipe/allrecipes";
     }
+
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ExceptionHandler(NotFoundException.class)
+    public ModelAndView handleNotFound(Exception exception){
+        log.error("handling not found exception");
+        log.error(exception.getMessage());
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("404error");
+        modelAndView.addObject("exception", exception);
+        return modelAndView;
+    }
+
+
+
 
 
 }
