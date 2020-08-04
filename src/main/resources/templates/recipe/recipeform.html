@@ -58,17 +58,26 @@
         <h5 class="card-title">Recipe Information</h5>
     </div>
     <div class="card-body">
-            <div class="form-group">
+            <div class="form-group" th:class="${#fields.hasErrors('description')} ? 'form-group has-error' : 'form-group'" >
                 <label for="exampleFormControlInput1">Recipe Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1"  th:field="*{description}" >
+                <input type="text" class="form-control" id="exampleFormControlInput1" th:errorclass="has-error"/>
+                <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('description')}">
+                    <p th:each="err : ${#fields.errors('description')}" th:text="${err}"></p>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-group" >
                 <label for="exampleFormControlInput2">Prep Time</label>
-                <input type="number" class="form-control" id="exampleFormControlInput2"  th:field="*{prepTime}">
+                <input type="number" class="form-control " id="exampleFormControlInput2"  th:field="*{prepTime}">
+                <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('prepTime')}">
+                    <p th:each="err : ${#fields.errors('prepTime')}" th:text="${err}"></p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput3">Cook Time</label>
                 <input type="number" class="form-control" id="exampleFormControlInput3"  th:field="*{cookTime}">
+                <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('cookTime')}">
+                    <p th:each="err : ${#fields.errors('cookTime')}" th:text="${err}"></p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect">Difficulty</label>
@@ -88,6 +97,9 @@
         <div class="form-group">
             <label for="exampleFormControlInput6">Servings</label>
             <input type="number" class="form-control" id="exampleFormControlInput6"  th:field="*{servings}">
+            <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('servings')}">
+                <p th:each="err : ${#fields.errors('servings')}" th:text="${err}"></p>
+            </div>
         </div>
         <div class="form-group">
             <label for="exampleFormControlInput4">Source</label>
@@ -96,6 +108,9 @@
         <div class="form-group">
             <label for="exampleFormControlInput5">URL</label>
             <input type="text" class="form-control" id="exampleFormControlInput5"  th:field="*{url}">
+            <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('url')}">
+                <p th:each="err : ${#fields.errors('url')}" th:text="${err}"></p>
+            </div>
         </div>
 
     </div>
@@ -207,9 +222,12 @@
         <h5 class="card-title">Directions</h5>
     </div>
     <div class="card-body">
-            <div class="form-group">
+            <div th:class="${#fields.hasErrors('directions')} ? 'form-group has-error' : 'form-group'">
                 <label for="exampleFormControlTextarea1"></label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{directions}"></textarea>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{directions}" th:errorclass = "has-error"></textarea>
+                <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('directions')}">
+                    <p th:each="err : ${#fields.errors('directions')}" th:text="${err}"></p>
+                </div>
             </div>
 
     </div>
