@@ -25,6 +25,8 @@ public class RecipeController {
         this.recipeService = recipeService;
     }
 
+    final static String RECIPE_RECIPEFORM_URL = "recipe/recipeform";
+
     @GetMapping({"/recipe/allrecipes"})
     public String getIndexPage(Model model) {
         model.addAttribute("recipes", recipeService.getRecipes());
@@ -34,25 +36,28 @@ public class RecipeController {
 
     @GetMapping("/recipe/{id}/show")
     public String showById(@PathVariable String id,  Model model){
-        model.addAttribute("recipe", recipeService.findById(new Long(id)));
+        model.addAttribute("recipe", recipeService.findById(Long.valueOf(id)));
         return "recipe/show";
     }
 
     @GetMapping("/recipe/new")
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
-        return "recipe/recipeform";
+        return RECIPE_RECIPEFORM_URL;
     }
 
     @GetMapping("recipe/{id}/update")
     public String updateRecipe(@PathVariable String id, Model model){
         model.addAttribute("recipe", recipeService.findCommandById(Long.valueOf(id)));
-        return "recipe/recipeform";
+        return RECIPE_RECIPEFORM_URL;
     }
 
     @PostMapping("recipe")
     public String saveOrUpdate(@Valid @ModelAttribute("recipe") RecipeCommand recipeCommand, BindingResult bindingResult){
-        if(bindingResult.hasErrors()) bindingResult.getAllErrors().forEach(error -> log.debug(error.toString())); //
+        if(bindingResult.hasErrors()){
+            bindingResult.getAllErrors().forEach(error -> log.debug(error.toString())); //
+            return RECIPE_RECIPEFORM_URL;
+        }
         RecipeCommand savedRecipe = recipeService.saveRecipeCommand(recipeCommand);
         return "redirect:/recipe/" + savedRecipe.getId() + "/show";
     }

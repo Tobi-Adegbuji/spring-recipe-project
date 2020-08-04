@@ -22,6 +22,7 @@ import java.util.Set;
 public class RecipeCommand {
     private Long id;
 
+    //Validators
     @NotBlank
     @Size(min = 3, max =225)
     private String description;
@@ -35,7 +36,7 @@ public class RecipeCommand {
     private Integer cookTime;
 
     @Min(1)
-    @Max(1000)
+    @Max(100)
     private Integer servings;
 
     @NotBlank

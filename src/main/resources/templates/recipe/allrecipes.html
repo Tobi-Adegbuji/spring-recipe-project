@@ -68,7 +68,7 @@
                     <th>Difficulty</th>
                 </tr>
                 </thead>
-                <tr style="margin-left: 10px" th:each="recipe: ${recipes}">
+                <tr style="margin-left: 10px;" th:each="recipe: ${recipes}">
                     <td> <a href="#" th:href="@{'/recipe/' + ${recipe.id} + '/show'}" th:text="${recipe.description}">View</a></td>
                     <td th:text="${recipe.prepTime}"></td>
                     <td th:text="${recipe.cookTime}"></td>
