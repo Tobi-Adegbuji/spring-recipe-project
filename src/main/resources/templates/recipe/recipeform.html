@@ -43,7 +43,9 @@
 
 <div class="container-fluid d-flex flex-column align-items-center">
     <div class="card shadow-lg mt-5 w-25">
-        <img th:src="@{/img/foodavatar.jpg}" alt="recipe book" class="d-block img-fluid">
+<!--        <img th:src="@{/img/foodavatar.jpg}" alt="recipe book" class="d-block img-fluid">-->
+        <img th:if="${recipe.image != null}" th:src="@{'/recipe/' + ${recipe.id} + '/recipeimage'}" alt="recipe book" class="d-block img-fluid">
+        <img th:if="${recipe.image == null}" th:src="@{/img/foodavatar.jpg}" alt="recipe book" class="d-block img-fluid">
     </div>
     <a class="btn btn-primary mx-auto mt-1" th:href="@{'/recipe/' + ${recipe.id} + '/image'}">Change Photo</a>
 
@@ -58,9 +60,9 @@
         <h5 class="card-title">Recipe Information</h5>
     </div>
     <div class="card-body">
-            <div class="form-group" th:class="${#fields.hasErrors('description')} ? 'form-group has-error' : 'form-group'" >
+            <div class="form-group">
                 <label for="exampleFormControlInput1">Recipe Name</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" th:errorclass="has-error"/>
+                <input type="text" class="form-control" id="exampleFormControlInput1" th:field="*{description}"/>
                 <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('description')}">
                     <p th:each="err : ${#fields.errors('description')}" th:text="${err}"></p>
                 </div>
@@ -117,83 +119,83 @@
 </div>
 
 
-<div class="card mx-auto mt-3 w-75" >
-    <div class="card-header bg-dark text-white">
-        <h5 class="card-title">Categories</h5>
-    </div>
-    <div class="card-body">
-        <div class="container">
-            <div class="row">
+<!--<div class="card mx-auto mt-3 w-75" >-->
+<!--    <div class="card-header bg-dark text-white">-->
+<!--        <h5 class="card-title">Categories</h5>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--        <div class="container">-->
+<!--            <div class="row">-->
 
 
-                <div class="col-4">
-                    <div class="card shadow-sm bg-light w-100">
-                        <div class="card-header container-fluid" >
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Mexican</h6>
-                                </div>
-                                <div class="col-6 d-flex justify-content-end">
-                                    <div class="form-check">
-                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                        <img th:src="@{/images/food1.jpg}" class="img-fluid" alt="...">
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="col-4">-->
+<!--                    <div class="card shadow-sm bg-light w-100">-->
+<!--                        <div class="card-header container-fluid" >-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-6 d-flex justify-content-start">-->
+<!--                                    <h6 class="card-title ">Mexican</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-6 d-flex justify-content-end">-->
+<!--                                    <div class="form-check">-->
+<!--                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                        <img th:src="@{/images/food1.jpg}" class="img-fluid" alt="...">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-<!--                CARD 2-->
-                <div class="col-4">
-                    <div class="card shadow-sm bg-light w-100">
-                        <div class="card-header container-fluid" >
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Japanese</h6>
-                                </div>
-                                <div class="col-6 d-flex justify-content-end">
-                                    <div class="form-check">
-                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox1" value="option1" aria-label="...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <img th:src="@{/images/food2.jpg}" class="img-fluid" alt="...">
-                        </div>
-                    </div>
-                </div>
-
-
+<!--&lt;!&ndash;                CARD 2&ndash;&gt;-->
+<!--                <div class="col-4">-->
+<!--                    <div class="card shadow-sm bg-light w-100">-->
+<!--                        <div class="card-header container-fluid" >-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-6 d-flex justify-content-start">-->
+<!--                                    <h6 class="card-title ">Japanese</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-6 d-flex justify-content-end">-->
+<!--                                    <div class="form-check">-->
+<!--                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox1" value="option1" aria-label="...">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <img th:src="@{/images/food2.jpg}" class="img-fluid" alt="...">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
 
 
-                <div class="col-4">
-                    <div class="card shadow-sm bg-light w-100">
-                        <div class="card-header container-fluid" >
-                            <div class="row">
-                                <div class="col-6 d-flex justify-content-start">
-                                    <h6 class="card-title ">Italian</h6>
-                                </div>
-                                <div class="col-6 d-flex justify-content-end">
-                                    <div class="form-check">
-                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox2" value="option1" aria-label="...">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <img th:src="@{/images/food3.jpg}" class="img-fluid w-100" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+<!--                <div class="col-4">-->
+<!--                    <div class="card shadow-sm bg-light w-100">-->
+<!--                        <div class="card-header container-fluid" >-->
+<!--                            <div class="row">-->
+<!--                                <div class="col-6 d-flex justify-content-start">-->
+<!--                                    <h6 class="card-title ">Italian</h6>-->
+<!--                                </div>-->
+<!--                                <div class="col-6 d-flex justify-content-end">-->
+<!--                                    <div class="form-check">-->
+<!--                                        <input class="form-check-input position-static" type="checkbox" id="blankCheckbox2" value="option1" aria-label="...">-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="card-body">-->
+<!--                            <img th:src="@{/images/food3.jpg}" class="img-fluid w-100" alt="...">-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 
 
 
