@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 
 @Controller
@@ -43,7 +44,7 @@ public class RecipeController {
     @GetMapping("/recipe/new")
     public String newRecipe(Model model){
         model.addAttribute("recipe", new RecipeCommand());
-        return RECIPE_RECIPEFORM_URL;
+        return "recipe/newrecipeform";
     }
 
     @GetMapping("recipe/{id}/update")
@@ -52,14 +53,27 @@ public class RecipeController {
         return RECIPE_RECIPEFORM_URL;
     }
 
-    @PostMapping("recipe")
-    public String saveOrUpdate(@Valid @ModelAttribute("recipe") RecipeCommand recipeCommand, BindingResult bindingResult){
+    @PostMapping("recipe_edit")
+    public String saveOrUpdateEdit(@Valid @ModelAttribute("recipe") RecipeCommand recipeCommand, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
             bindingResult.getAllErrors().forEach(error -> log.debug(error.toString())); //
             return RECIPE_RECIPEFORM_URL;
         }
         RecipeCommand savedRecipe = recipeService.saveRecipeCommand(recipeCommand);
         return "redirect:/recipe/" + savedRecipe.getId() + "/show";
+    }
+
+    @PostMapping("recipeform_new")
+    public String saveOrUpdateNew(@Valid @ModelAttribute("recipe") RecipeCommand recipeCommand, BindingResult bindingResult, Model model){
+        if(bindingResult.hasErrors()){
+            bindingResult.getAllErrors().forEach(error -> log.debug(error.toString()));
+           List errorList = bindingResult.getAllErrors();
+           if(!(errorList.size() <= 1))
+            return "recipe/newrecipeform";
+        }
+        RecipeCommand savedRecipe = recipeService.saveRecipeCommand(recipeCommand);
+        model.addAttribute("recipe", savedRecipe);
+        return "recipe/newrecipeform2";
     }
 
     @GetMapping("recipe/{id}/delete")
