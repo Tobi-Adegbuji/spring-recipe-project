@@ -40,6 +40,13 @@ public class ImageController {
         return "redirect:/recipe/" + id + "/show";
     }
 
+    @PostMapping("recipe/{id}/newimage")
+    public String postImageNew(@PathVariable String id, @RequestParam("imagefile") MultipartFile multipartFile, Model model){
+        imageService.saveImageFile(Long.parseLong(id), multipartFile);
+        model.addAttribute("recipe", recipeService.findCommandById(Long.parseLong(id)));
+        return "recipe/newrecipeform2";
+    }
+
     @GetMapping("recipe/{id}/recipeimage")
     public void getRecipeImage(@PathVariable String id, HttpServletResponse response) throws IOException {
         RecipeCommand recipeCommand = recipeService.findCommandById(Long.parseLong(id));
