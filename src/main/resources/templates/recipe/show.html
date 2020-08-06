@@ -106,7 +106,7 @@
         <h5 class="card-title">Notes</h5>
     </div>
     <div class="card-body">
-        <p class="card-text" th:text="${recipe.notes.recipeNotes}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text" th:if="${recipe.notes != null}" th:text="${recipe.notes.getRecipeNotes()}">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     </div>
 </div>
 

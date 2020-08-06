@@ -9,10 +9,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.validator.constraints.URL;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,10 +24,12 @@ public class RecipeCommand {
     @Size(min = 3, max =225)
     private String description;
 
+    @NotNull(message= "You must input a preparation time.")
     @Min(1)
     @Max(1000)
     private Integer prepTime;
 
+    @NotNull(message= "You must input a cook time.")
     @Min(1)
     @Max(1000)
     private Integer cookTime;

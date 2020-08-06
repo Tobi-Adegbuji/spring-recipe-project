@@ -67,12 +67,11 @@ public class RecipeController {
     public String saveOrUpdateNew(@Valid @ModelAttribute("recipe") RecipeCommand recipeCommand, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             bindingResult.getAllErrors().forEach(error -> log.debug(error.toString()));
-           List errorList = bindingResult.getAllErrors();
-           if(!(errorList.size() <= 1))
+//           List errorList = bindingResult.getAllErrors();
+//           if(!(errorList.size() <= 1))
             return "recipe/newrecipeform";
         }
-        RecipeCommand savedRecipe = recipeService.saveRecipeCommand(recipeCommand);
-        model.addAttribute("recipe", savedRecipe);
+        model.addAttribute("recipe", recipeCommand);
         return "recipe/newrecipeform2";
     }
 

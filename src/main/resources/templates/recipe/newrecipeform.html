@@ -107,6 +107,34 @@
         </div>
     </div>
 
+    <div class="card mx-auto mt-3 w-75">
+        <div class="card-header bg-dark text-white">
+            <h5 class="card-title">Directions</h5>
+        </div>
+        <div class="card-body">
+            <div th:class="${#fields.hasErrors('directions')} ? 'form-group has-error' : 'form-group'">
+                <label for="exampleFormControlTextarea1"></label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" th:field="*{directions}" th:errorclass = "has-error"></textarea>
+                <div class="alert alert-danger mt-3" th:if="${#fields.hasErrors('directions')}">
+                    <p th:each="err : ${#fields.errors('directions')}" th:text="${err}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mx-auto mt-3 w-75">
+        <div class="card-header bg-dark text-white">
+            <h5 class="card-title">Notes</h5>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea2"></label>
+                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3" th:field="*{notes.recipeNotes}"></textarea>
+            </div>
+
+        </div>
+    </div>
+
     <div class="row justify-content-center">
         <button type="submit" class="btn btn-success w-75 mt-3 mb-3 ">Next</button>
     </div>
