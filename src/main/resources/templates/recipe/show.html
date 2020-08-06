@@ -110,17 +110,17 @@
     </div>
 </div>
 
-<div class="card mx-auto w-75 mt-5">
-    <div class="card-header bg-dark text-white">
-        <h5 class="card-title">Categories</h5>
-    </div>
-    <div class="card-body">
-        <h6 class="card-subtitle mb-2 text-muted" th:text="${recipe.description + ' belongs to these categories:'}">Recipe</h6>
-    </div>
-    <ul class="list-group list-group-flush">
-        <li class="list-group-item" th:each="category : ${recipe.categories}" th:text="${category.getCategoryName()}">All Categories</li>
-    </ul>
-</div>
+<!--<div class="card mx-auto w-75 mt-5">-->
+<!--    <div class="card-header bg-dark text-white">-->
+<!--        <h5 class="card-title">Categories</h5>-->
+<!--    </div>-->
+<!--    <div class="card-body">-->
+<!--        <h6 class="card-subtitle mb-2 text-muted" th:text="${recipe.description + ' belongs to these categories:'}">Recipe</h6>-->
+<!--    </div>-->
+<!--    <ul class="list-group list-group-flush">-->
+<!--        <li class="list-group-item" th:each="category : ${recipe.categories}" th:text="${category.getCategoryName()}">All Categories</li>-->
+<!--    </ul>-->
+<!--</div>-->
 
 <form action=""></form>
 <a href="" type="submit"></a>

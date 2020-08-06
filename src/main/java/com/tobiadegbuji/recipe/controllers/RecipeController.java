@@ -71,8 +71,9 @@ public class RecipeController {
 //           if(!(errorList.size() <= 1))
             return "recipe/newrecipeform";
         }
-        model.addAttribute("recipe", recipeCommand);
-        return "recipe/newrecipeform2";
+        RecipeCommand savedRecipe = recipeService.saveRecipeCommand(recipeCommand);
+        model.addAttribute("recipe", savedRecipe);
+        return "recipe/ingredients/list";
     }
 
     @GetMapping("recipe/{id}/delete")
