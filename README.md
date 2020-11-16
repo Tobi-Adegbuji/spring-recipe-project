@@ -9,6 +9,4 @@
 - Spring MVC
 - Project Lombok
 - Hibernate ORM
-- H2 in Memory Database
-- JUnit 5
 - Bootstrap CSS
